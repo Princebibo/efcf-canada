@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EFCF Canada — Festival du Film et du Cinéma Égyptien au Canada</title>
+<meta name="description" content="Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) fait découvrir la richesse du cinéma égyptien au public canadien et crée un pont artistique entre l'Égypte et le Canada.">
+<meta name="theme-color" content="#080f26">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#101d43;
+    --navy-2:#16244f;
+    --navy-deep:#080f26;
+    --gold:#f0b323;
+    --gold-lo:#c98d12;
+    --gold-hi:#ffe1a0;
+    --maple:#d62828;
+    --ink:#0c1330;
+    --paper:#f7f4ed;
+    --paper-2:#ece5d7;
+    --muted:rgba(247,244,237,.72);
+    --muted-2:rgba(247,244,237,.5);
+    --muted-dark:rgba(12,19,48,.66);
+    --line:rgba(240,179,35,.26);
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --maxw:1180px;
+  }
+  html[lang="ar"]{--serif:"Noto Kufi Arabic","Inter",sans-serif;--sans:"Noto Kufi Arabic","Inter",sans-serif}
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--navy-deep);color:var(--paper);
+    font-family:var(--sans);font-size:17px;line-height:1.78;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%}
+  .wrap{width:min(100% - 2.5rem,var(--maxw));margin-inline:auto}
+  ::selection{background:var(--gold);color:var(--navy-deep)}
+
+  /* scroll progress */
+  #progress{
+    position:fixed;inset-block-start:0;inset-inline-start:0;height:2px;width:0;z-index:99;
+    background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(8,15,38,.78);backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(240,179,35,.14);
+  }
+  .bar{display:flex;align-items:center;gap:1rem;padding:.55rem 0;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;min-width:0}
+  .brand .mark{width:50px;height:50px;flex:0 0 auto;border-radius:50%;object-fit:contain}
+  .brand .txt b{
+    display:block;font-family:var(--serif);font-size:1.34rem;font-weight:700;line-height:1;
+    letter-spacing:.1em;
+    background:linear-gradient(180deg,var(--gold-hi),var(--gold) 55%,var(--gold-lo));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .brand .txt span{display:block;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);margin-top:.2rem}
+  html[lang="ar"] .brand .txt span{letter-spacing:0;text-transform:none;font-size:.74rem}
+
+  nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0}
+  nav a{
+    position:relative;text-decoration:none;font-size:.79rem;letter-spacing:.13em;text-transform:uppercase;
+    font-weight:500;color:var(--muted);padding-block:.45rem;transition:color .22s;
+  }
+  html[lang="ar"] nav a{text-transform:none;letter-spacing:0;font-size:.95rem}
+  nav a::after{
+    content:"";position:absolute;inset-inline:0;bottom:0;height:1px;
+    background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .28s;
+  }
+  nav a:hover,nav a:focus-visible{color:var(--gold)}
+  nav a:hover::after,nav a:focus-visible::after{transform:scaleX(1)}
+
+  .langs{display:flex;gap:.15rem;border:1px solid var(--line);border-radius:999px;padding:.2rem}
+  .langs button{
+    font:inherit;font-size:.72rem;letter-spacing:.09em;font-weight:600;
+    background:none;border:0;color:var(--muted-2);cursor:pointer;
+    padding:.3rem .66rem;border-radius:999px;transition:.2s;
+  }
+  .langs button:hover{color:var(--gold)}
+  .langs button[aria-pressed="true"]{
+    background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:var(--navy-deep);
+    box-shadow:0 2px 10px rgba(240,179,35,.3);
+  }
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:9px;color:var(--gold);padding:.35rem .6rem;font-size:1.1rem;cursor:pointer;line-height:1}
+
+  /* ---------- Film strip divider ---------- */
+  .filmstrip{
+    height:22px;border-block:1px solid rgba(240,179,35,.22);
+    background:
+      radial-gradient(circle at 11px 50%,rgba(240,179,35,.34) 0 4.5px,transparent 5.2px) 0 0/26px 100%,
+      linear-gradient(180deg,rgba(240,179,35,.05),transparent);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:clamp(3rem,8vw,6rem) 0 clamp(3rem,7vw,5rem);
+    background:
+      radial-gradient(1000px 560px at 50% -14%,rgba(240,179,35,.17),transparent 62%),
+      radial-gradient(700px 500px at 88% 20%,rgba(27,44,98,.85),transparent 70%),
+      linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);
+  }
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.9fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.6rem;
+    font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;
+    color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:.4rem 1.05rem;margin-bottom:1.5rem;
+    background:rgba(240,179,35,.05);
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+  html[lang="ar"] .eyebrow{letter-spacing:0;text-transform:none;font-size:.85rem}
+  h1{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(2.4rem,5.6vw,4.15rem);line-height:1.06;margin:0 0 1.1rem;color:#fff;
+  }
+  h1 em{
+    font-style:normal;display:block;
+    background:linear-gradient(100deg,var(--gold-hi),var(--gold) 40%,var(--gold-lo));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{font-size:clamp(1.02rem,1.55vw,1.18rem);color:var(--muted);max-width:46ch;margin:0 0 2rem}
+  .cta-row{display:flex;flex-wrap:wrap;gap:.75rem}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:600;font-size:.79rem;
+    letter-spacing:.14em;text-transform:uppercase;padding:.92rem 1.8rem;border-radius:999px;transition:.24s;
+  }
+  html[lang="ar"] .btn{letter-spacing:0;text-transform:none;font-size:.95rem}
+  .btn-gold{
+    background:linear-gradient(180deg,var(--gold-hi),var(--gold) 60%,var(--gold-lo));
+    color:var(--navy-deep);border:1px solid rgba(255,225,160,.6);
+    box-shadow:0 10px 28px -12px rgba(240,179,35,.85);
+  }
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(240,179,35,.95)}
+  .btn-ghost{border:1px solid var(--line);color:var(--paper)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);background:rgba(240,179,35,.06)}
+
+  .sealbox{position:relative;justify-self:center;width:min(100%,400px);aspect-ratio:1}
+  .sealbox::before{
+    content:"";position:absolute;inset:-14%;border-radius:50%;
+    background:radial-gradient(circle,rgba(240,179,35,.22),transparent 62%);
+    animation:pulse 7s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:.55;transform:scale(.97)}50%{opacity:1;transform:scale(1.03)}}
+  .sealbox svg,.sealbox img{position:relative;width:100%;height:auto;border-radius:50%;filter:drop-shadow(0 26px 60px rgba(0,0,0,.6))}
+
+  /* pillars */
+  .pillars{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1px;background:rgba(240,179,35,.16);
+    border-block:1px solid rgba(240,179,35,.16);
+  }
+  .pillars div{
+    background:var(--navy-deep);padding:1.25rem 1.2rem;text-align:center;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);font-weight:500;
+  }
+  html[lang="ar"] .pillars div{letter-spacing:0;text-transform:none;font-size:.92rem}
+
+  /* ---------- Sections ---------- */
+  section{padding:clamp(3.6rem,7vw,6.2rem) 0}
+  .band-light{background:linear-gradient(180deg,var(--paper),var(--paper-2));color:var(--ink)}
+  .band-light .muted{color:var(--muted-dark)}
+  .band-navy{background:linear-gradient(180deg,var(--navy-deep),var(--navy))}
+  h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.95rem,3.7vw,2.9rem);line-height:1.13;margin:0 0 1rem}
+  .kicker{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 .75rem;font-weight:600}
+  html[lang="ar"] .kicker{letter-spacing:0;text-transform:none;font-size:.9rem}
+  .band-light .kicker{color:#a4741a}
+  p{margin:0 0 1.05rem}
+  .muted{color:var(--muted)}
+  .two-col{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+  .ornament{display:flex;align-items:center;gap:.6rem;margin:0 0 1.7rem;color:var(--gold)}
+  .ornament i{display:block;height:1px;width:54px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .ornament b{font-size:.65rem;transform:rotate(45deg);display:block;width:7px;height:7px;background:var(--gold)}
+  .center .ornament{justify-content:center}
+  .center .ornament i:first-child{background:linear-gradient(90deg,transparent,var(--gold))}
+
+  /* objectives */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:1.05rem;margin-top:2.5rem}
+  .card{
+    position:relative;overflow:hidden;
+    background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    border:1px solid rgba(240,179,35,.18);border-radius:16px;padding:1.7rem 1.55rem;transition:.28s;
+  }
+  .card::after{
+    content:"";position:absolute;inset-block-start:0;inset-inline-start:0;width:0;height:2px;
+    background:linear-gradient(90deg,var(--gold),transparent);transition:width .45s;
+  }
+  .card:hover{border-color:rgba(240,179,35,.55);transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(0,0,0,.9)}
+  .card:hover::after{width:100%}
+  .card .num{
+    font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--gold);
+    display:block;margin-bottom:.45rem;line-height:1;opacity:.85;
+  }
+  .card p{margin:0;font-size:.98rem;color:var(--muted)}
+
+  /* leadership */
+  .leads{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:2.4rem;max-width:760px;margin-inline:auto}
+  .lead{
+    border:1px solid rgba(12,19,48,.12);border-radius:16px;padding:1.9rem 1.5rem;background:#fff;text-align:center;
+    box-shadow:0 18px 40px -34px rgba(12,19,48,.8);transition:.28s;
+  }
+  .lead:hover{transform:translateY(-4px);box-shadow:0 26px 46px -30px rgba(12,19,48,.7)}
+  .lead .mono{
+    width:62px;height:62px;margin:0 auto 1rem;border-radius:50%;
+    background:radial-gradient(circle at 30% 25%,var(--navy-2),var(--navy));
+    color:var(--gold);display:grid;place-items:center;
+    font-family:"Cormorant Garamond",Georgia,serif;font-size:1.4rem;font-weight:700;letter-spacing:.06em;
+    border:1px solid rgba(240,179,35,.45);
+  }
+  .lead h3{margin:0 0 .3rem;font-family:var(--serif);font-size:1.45rem;font-weight:700}
+  .lead p{margin:0;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#a4741a;font-weight:600}
+  html[lang="ar"] .lead p{letter-spacing:0;text-transform:none;font-size:.98rem}
+  .note{margin:2rem auto 0;font-size:.95rem;text-align:center;color:var(--muted-dark);max-width:60ch}
+
+  /* quote */
+  .quote{
+    position:relative;text-align:center;
+    background:radial-gradient(900px 500px at 50% 0%,rgba(240,179,35,.15),transparent 65%),var(--navy-deep);
+  }
+  blockquote{margin:0 auto;max-width:62ch;font-family:var(--serif);font-size:clamp(1.42rem,3vw,2.15rem);line-height:1.42;color:#fff}
+  .quote .kicker{margin-bottom:1.5rem}
+  .maple{display:flex;justify-content:center;gap:.8rem;align-items:center;margin-top:2.2rem}
+  .maple i{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+  .maple svg{width:26px;height:26px;fill:var(--maple)}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.4rem}
+  .contact-grid > div{border:1px solid rgba(240,179,35,.16);border-radius:14px;padding:1.4rem 1.4rem;background:rgba(255,255,255,.03)}
+  .contact-grid a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;font-weight:500}
+  .contact-grid a:hover{border-bottom-color:var(--gold)}
+  .contact-grid h3{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);margin:0 0 .5rem;font-weight:600}
+  html[lang="ar"] .contact-grid h3{letter-spacing:0;text-transform:none;font-size:.95rem}
+
+  footer{background:#050a1b;padding:2.6rem 0}
+  .foot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;font-size:.84rem;color:var(--muted-2)}
+
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .hero-grid,.two-col{grid-template-columns:1fr}
+    .sealbox{order:-1;width:min(74%,300px)}
+    .lede{max-width:none}
+    nav{display:none;position:absolute;inset-inline:0;top:100%;background:rgba(8,15,38,.98);border-bottom:1px solid var(--line);padding:.8rem 1.25rem 1.3rem}
+    nav.open{display:block}
+    nav ul{flex-direction:column;gap:.2rem}
+    nav a{display:block;padding:.62rem 0}
+    .menu-btn{display:block}
+    header .bar{position:relative;flex-wrap:wrap}
+    .brand .mark{width:42px;height:42px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+    .sealbox::before{animation:none}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- ============ Logo (recréation vectorielle du sceau EFCFC) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="efcf-seal" viewBox="0 0 400 400">
+      <path id="arcTop" d="M 32,200 A 168,168 0 0 1 368,200" fill="none"/>
+      <path id="arcBot" d="M 368,200 A 168,168 0 0 1 32,200" fill="none"/>
+
+      <circle cx="200" cy="200" r="196" fill="#101d43"/>
+      <circle cx="200" cy="200" r="191" fill="none" stroke="#f0b323" stroke-width="9"/>
+      <circle cx="200" cy="200" r="156" fill="none" stroke="#f0b323" stroke-width="4"/>
+      <circle cx="200" cy="200" r="143" fill="none" stroke="#f0b323" stroke-width="2.5"/>
+
+      <g fill="#f0b323" font-family="Cormorant Garamond,Georgia,serif" font-weight="700">
+        <text font-size="18" letter-spacing=".5">
+          <textPath href="#arcTop" startOffset="50%" text-anchor="middle" textLength="470">EGYPTIAN FILM AND CINEMA FESTIVAL IN CANADA</textPath>
+        </text>
+        <text font-size="18" letter-spacing=".5">
+          <textPath href="#arcBot" startOffset="50%" text-anchor="middle" textLength="455">Festival Du Film Et Du Cinéma Égyptiens Au Canada</textPath>
+        </text>
+      </g>
+      <circle cx="32" cy="200" r="5.5" fill="#f0b323"/>
+      <circle cx="368" cy="200" r="5.5" fill="#f0b323"/>
+
+      <!-- pellicules -->
+      <g stroke="#f0b323" fill="#101d43">
+        <g id="efcf-strip" transform="rotate(13 110 259)">
+          <rect x="62" y="246" width="98" height="27" stroke-width="3.4" rx="2"/>
+          <g fill="#f0b323" stroke="none">
+            <rect x="69" y="250" width="7" height="6" rx="1"/><rect x="85" y="250" width="7" height="6" rx="1"/>
+            <rect x="101" y="250" width="7" height="6" rx="1"/><rect x="117" y="250" width="7" height="6" rx="1"/>
+            <rect x="133" y="250" width="7" height="6" rx="1"/>
+            <rect x="69" y="263" width="7" height="6" rx="1"/><rect x="85" y="263" width="7" height="6" rx="1"/>
+            <rect x="101" y="263" width="7" height="6" rx="1"/><rect x="117" y="263" width="7" height="6" rx="1"/>
+            <rect x="133" y="263" width="7" height="6" rx="1"/>
+          </g>
+        </g>
+        <use href="#efcf-strip" transform="translate(400,0) scale(-1,1)"/>
+      </g>
+
+      <!-- masque pharaonique -->
+      <clipPath id="efcf-nemes">
+        <path d="M200,95 C172,95 152,111 149,138 L141,200 C139,220 133,232 121,240 L130,266 L270,266 L279,240 C267,232 261,220 259,200 L251,138 C248,111 228,95 200,95 Z"/>
+      </clipPath>
+      <g>
+        <path d="M200,95 C172,95 152,111 149,138 L141,200 C139,220 133,232 121,240 L130,266 L270,266 L279,240 C267,232 261,220 259,200 L251,138 C248,111 228,95 200,95 Z"
+              fill="#101d43" stroke="#f0b323" stroke-width="5" stroke-linejoin="round"/>
+        <g clip-path="url(#efcf-nemes)" stroke="#f0b323" stroke-width="4.5">
+          <path d="M108,120h184M108,136h184M108,152h184M108,168h184M108,184h184M108,200h184M108,216h184M108,232h184M108,248h184M108,262h184"/>
+        </g>
+        <!-- uraeus -->
+        <path d="M200,72c-9,0-14,6-14,13v16h28V85c0-7-5-13-14-13z" fill="#101d43" stroke="#f0b323" stroke-width="4.5" stroke-linejoin="round"/>
+        <circle cx="200" cy="68" r="6.5" fill="#101d43" stroke="#f0b323" stroke-width="4"/>
+        <!-- visage -->
+        <ellipse cx="200" cy="188" rx="50" ry="57" fill="#101d43" stroke="#f0b323" stroke-width="5"/>
+        <!-- barbe -->
+        <path d="M188,244v34c0,8,5,13,12,13s12-5,12-13v-34z" fill="#101d43" stroke="#f0b323" stroke-width="4.5" stroke-linejoin="round"/>
+        <g stroke="#f0b323" stroke-width="3"><path d="M189,256h22M189,268h22"/></g>
+      </g>
+
+      <!-- feuilles d'érable + EFCFC -->
+      <g fill="#d62828">
+        <g transform="translate(106,272) scale(.35)">
+          <path d="M50,4 57,26 74,15 69,38 92,33 79,49 98,58 74,64 80,82 57,75 54,97 46,97 43,75 20,82 26,64 2,58 21,49 8,33 31,38 26,15 43,26 Z"/>
+        </g>
+        <g transform="translate(259,272) scale(.35)">
+          <path d="M50,4 57,26 74,15 69,38 92,33 79,49 98,58 74,64 80,82 57,75 54,97 46,97 43,75 20,82 26,64 2,58 21,49 8,33 31,38 26,15 43,26 Z"/>
+        </g>
+      </g>
+      <text x="200" y="312" text-anchor="middle" fill="#f0b323"
+            font-family="Cormorant Garamond,Georgia,serif" font-weight="700" font-size="41" letter-spacing="1.5">EFCFC</text>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <img class="mark logo-img" src="assets/logo.png" alt="" hidden>
+      <svg class="mark logo-svg" viewBox="0 0 400 400" aria-hidden="true"><use href="#efcf-seal"/></svg>
+      <span class="txt">
+        <b>EFCF</b>
+        <span data-i18n="brandSub">Canada</span>
+      </span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+
+    <nav id="nav">
+      <ul>
+        <li><a href="#about" data-i18n="navAbout">À propos</a></li>
+        <li><a href="#vision" data-i18n="navVision">Vision</a></li>
+        <li><a href="#objectives" data-i18n="navObjectives">Objectifs</a></li>
+        <li><a href="#leadership" data-i18n="navLeadership">Direction</a></li>
+        <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="fr" aria-pressed="true">FR</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+      <button data-lang="ar" aria-pressed="false">ع</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="rv">
+        <span class="eyebrow" data-i18n="heroEyebrow">Festival culturel et cinématographique</span>
+        <h1>
+          <span data-i18n="heroTitle1">Festival du Film et du Cinéma</span>
+          <em data-i18n="heroTitle2">Égyptien au Canada</em>
+        </h1>
+        <p class="lede" data-i18n="heroLede">Un pont artistique et culturel entre l’Égypte et le Canada, célébré à travers le cinéma.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="#about" data-i18n="ctaDiscover">Découvrir le festival</a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="ctaPartner">Devenir partenaire</a>
+        </div>
+      </div>
+      <div class="sealbox rv">
+        <img class="logo-img" src="assets/logo.png" alt="EFCF Canada" hidden>
+        <svg class="logo-svg" viewBox="0 0 400 400" role="img" aria-label="EFCF Canada"><use href="#efcf-seal"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="pillars">
+    <div class="rv" data-i18n="pill1">Projections</div>
+    <div class="rv" data-i18n="pill2">Rencontres &amp; débats</div>
+    <div class="rv" data-i18n="pill3">Héritage &amp; création</div>
+    <div class="rv" data-i18n="pill4">Partenariats internationaux</div>
+  </div>
+
+  <section id="about" class="band-light">
+    <div class="wrap two-col">
+      <div class="rv">
+        <p class="kicker" data-i18n="aboutKicker">À propos</p>
+        <h2 data-i18n="aboutTitle">Egyptian Film and Cinema Festival in Canada</h2>
+        <div class="ornament"><b></b><i></i></div>
+      </div>
+      <div class="rv">
+        <p data-i18n="aboutP1">Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) est un festival culturel et cinématographique basé au Canada. Il a pour mission de faire découvrir la richesse du cinéma égyptien au public canadien et de créer un pont artistique et culturel entre l’Égypte et le Canada.</p>
+        <p data-i18n="aboutP2">À travers des projections, des discussions, des rencontres avec des cinéastes et des artistes, le festival célèbre l’héritage exceptionnel du cinéma égyptien ainsi que sa création contemporaine, tout en favorisant le dialogue et les échanges culturels.</p>
+        <p class="muted" data-i18n="aboutP3">L’EFCF Canada souhaite également développer des partenariats avec des festivals de cinéma, des institutions culturelles, des cinéastes et des professionnels de l’industrie au Canada et à l’international, afin de renforcer les échanges culturels et professionnels à travers le cinéma.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="filmstrip"></div>
+
+  <section id="vision" class="band-navy">
+    <div class="wrap two-col">
+      <div class="rv">
+        <p class="kicker" data-i18n="visionKicker">Notre vision</p>
+        <h2 data-i18n="visionTitle">Une plateforme reconnue, un pont durable</h2>
+        <div class="ornament"><b></b><i></i></div>
+      </div>
+      <div class="rv">
+        <p class="muted" style="font-size:1.1rem" data-i18n="visionP">Faire de l’EFCF Canada une plateforme reconnue pour la promotion du cinéma égyptien au Canada et un véritable pont entre l’Égypte, le Canada et la communauté cinématographique internationale.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="objectives" class="band-navy" style="padding-top:0">
+    <div class="wrap">
+      <div class="rv">
+        <p class="kicker" data-i18n="objKicker">Nos objectifs</p>
+        <h2 data-i18n="objTitle">Ce que nous construisons</h2>
+        <div class="ornament"><b></b><i></i></div>
+      </div>
+      <div class="cards">
+        <div class="card rv"><span class="num">01</span><p data-i18n="obj1">Présenter une sélection diversifiée de films égyptiens au public canadien.</p></div>
+        <div class="card rv"><span class="num">02</span><p data-i18n="obj2">Organiser des rencontres et des discussions avec des cinéastes, des artistes et des professionnels du cinéma.</p></div>
+        <div class="card rv"><span class="num">03</span><p data-i18n="obj3">Renforcer la présence du cinéma égyptien dans le paysage culturel canadien.</p></div>
+        <div class="card rv"><span class="num">04</span><p data-i18n="obj4">Développer des partenariats et des échanges avec des festivals et des institutions cinématographiques au Canada et à l’international.</p></div>
+        <div class="card rv"><span class="num">05</span><p data-i18n="obj5">Créer un espace de rencontre entre les professionnels du cinéma et les publics issus de différentes cultures.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="filmstrip"></div>
+
+  <section id="leadership" class="band-light">
+    <div class="wrap">
+      <div class="rv center" style="text-align:center">
+        <p class="kicker" data-i18n="leadKicker">Direction du festival</p>
+        <h2 data-i18n="leadTitle">Une direction, une vision partagée</h2>
+        <div class="ornament"><i></i><b></b><i></i></div>
+      </div>
+      <div class="leads">
+        <div class="lead rv">
+          <div class="mono">NS</div>
+          <h3 data-i18n="lead1Name">Nour Sobhy</h3>
+          <p data-i18n="leadRole">Co-fondatrice &amp; Co-présidente</p>
+        </div>
+        <div class="lead rv">
+          <div class="mono">AB</div>
+          <h3 data-i18n="lead2Name">Ahmed Bondok</h3>
+          <p data-i18n="leadRole2">Co-fondateur &amp; Co-président</p>
+        </div>
+      </div>
+      <p class="note rv" data-i18n="leadNote">La direction du festival est soutenue par un Comité exécutif, dont les membres et les responsabilités seront présentés prochainement.</p>
+    </div>
+  </section>
+
+  <section class="quote">
+    <div class="wrap rv">
+      <p class="kicker" data-i18n="quoteKicker">Le cinéma égyptien, un pont entre les cultures</p>
+      <blockquote data-i18n="quoteText">À l’EFCF Canada, nous croyons que le cinéma est bien plus qu’un film projeté sur un écran : c’est un langage universel capable de rapprocher les peuples, de créer des dialogues et de construire de véritables ponts entre les cultures.</blockquote>
+      <div class="maple">
+        <i></i>
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50,4 57,26 74,15 69,38 92,33 79,49 98,58 74,64 80,82 57,75 54,97 46,97 43,75 20,82 26,64 2,58 21,49 8,33 31,38 26,15 43,26 Z"/></svg>
+        <i></i>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="band-navy">
+    <div class="wrap">
+      <div class="rv">
+        <p class="kicker" data-i18n="contactKicker">Contact</p>
+        <h2 data-i18n="contactTitle">Travaillons ensemble</h2>
+        <div class="ornament"><b></b><i></i></div>
+        <p class="muted" style="max-width:54ch" data-i18n="contactP">Festivals, institutions culturelles, cinéastes, partenaires et médias : écrivez-nous pour toute collaboration, soumission de film ou demande de presse.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="rv">
+          <h3 data-i18n="contactEmailLabel">Courriel</h3>
+          <a href="mailto:info@efcfcanada.com">info@efcfcanada.com</a>
+        </div>
+        <div class="rv">
+          <h3 data-i18n="contactPressLabel">Presse &amp; partenariats</h3>
+          <a href="mailto:partners@efcfcanada.com">partners@efcfcanada.com</a>
+        </div>
+        <div class="rv">
+          <h3 data-i18n="contactLocationLabel">Lieu</h3>
+          <p class="muted" style="margin:0" data-i18n="contactLocation">Canada</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="filmstrip"></div>
+<footer>
+  <div class="wrap foot">
+    <span data-i18n="footLeft">© 2026 EFCF Canada — Festival du Film et du Cinéma Égyptien au Canada</span>
+    <span data-i18n="footRight">Un pont entre l’Égypte et le Canada</span>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    _dir:"ltr", _title:"EFCF Canada — Festival du Film et du Cinéma Égyptien au Canada",
+    brandSub:"Canada",
+    navAbout:"À propos", navVision:"Vision", navObjectives:"Objectifs", navLeadership:"Direction", navContact:"Contact",
+    heroEyebrow:"Festival culturel et cinématographique",
+    heroTitle1:"Festival du Film et du Cinéma", heroTitle2:"Égyptien au Canada",
+    heroLede:"Un pont artistique et culturel entre l’Égypte et le Canada, célébré à travers le cinéma.",
+    ctaDiscover:"Découvrir le festival", ctaPartner:"Devenir partenaire",
+    pill1:"Projections", pill2:"Rencontres & débats", pill3:"Héritage & création", pill4:"Partenariats internationaux",
+    aboutKicker:"À propos",
+    aboutTitle:"Egyptian Film and Cinema Festival in Canada",
+    aboutP1:"Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) est un festival culturel et cinématographique basé au Canada. Il a pour mission de faire découvrir la richesse du cinéma égyptien au public canadien et de créer un pont artistique et culturel entre l’Égypte et le Canada.",
+    aboutP2:"À travers des projections, des discussions, des rencontres avec des cinéastes et des artistes, le festival célèbre l’héritage exceptionnel du cinéma égyptien ainsi que sa création contemporaine, tout en favorisant le dialogue et les échanges culturels.",
+    aboutP3:"L’EFCF Canada souhaite également développer des partenariats avec des festivals de cinéma, des institutions culturelles, des cinéastes et des professionnels de l’industrie au Canada et à l’international, afin de renforcer les échanges culturels et professionnels à travers le cinéma.",
+    visionKicker:"Notre vision", visionTitle:"Une plateforme reconnue, un pont durable",
+    visionP:"Faire de l’EFCF Canada une plateforme reconnue pour la promotion du cinéma égyptien au Canada et un véritable pont entre l’Égypte, le Canada et la communauté cinématographique internationale.",
+    objKicker:"Nos objectifs", objTitle:"Ce que nous construisons",
+    obj1:"Présenter une sélection diversifiée de films égyptiens au public canadien.",
+    obj2:"Organiser des rencontres et des discussions avec des cinéastes, des artistes et des professionnels du cinéma.",
+    obj3:"Renforcer la présence du cinéma égyptien dans le paysage culturel canadien.",
+    obj4:"Développer des partenariats et des échanges avec des festivals et des institutions cinématographiques au Canada et à l’international.",
+    obj5:"Créer un espace de rencontre entre les professionnels du cinéma et les publics issus de différentes cultures.",
+    leadKicker:"Direction du festival", leadTitle:"Une direction, une vision partagée",
+    lead1Name:"Nour Sobhy", lead2Name:"Ahmed Bondok",
+    leadRole:"Co-fondatrice & Co-présidente", leadRole2:"Co-fondateur & Co-président",
+    leadNote:"La direction du festival est soutenue par un Comité exécutif, dont les membres et les responsabilités seront présentés prochainement.",
+    quoteKicker:"Le cinéma égyptien, un pont entre les cultures",
+    quoteText:"À l’EFCF Canada, nous croyons que le cinéma est bien plus qu’un film projeté sur un écran : c’est un langage universel capable de rapprocher les peuples, de créer des dialogues et de construire de véritables ponts entre les cultures.",
+    contactKicker:"Contact", contactTitle:"Travaillons ensemble",
+    contactP:"Festivals, institutions culturelles, cinéastes, partenaires et médias : écrivez-nous pour toute collaboration, soumission de film ou demande de presse.",
+    contactEmailLabel:"Courriel", contactPressLabel:"Presse & partenariats", contactLocationLabel:"Lieu", contactLocation:"Canada",
+    footLeft:"© 2026 EFCF Canada — Festival du Film et du Cinéma Égyptien au Canada",
+    footRight:"Un pont entre l’Égypte et le Canada"
+  },
+  en:{
+    _dir:"ltr", _title:"EFCF Canada — Egyptian Film and Cinema Festival in Canada",
+    brandSub:"Canada",
+    navAbout:"About", navVision:"Vision", navObjectives:"Objectives", navLeadership:"Leadership", navContact:"Contact",
+    heroEyebrow:"A cultural and cinematic festival",
+    heroTitle1:"Egyptian Film and Cinema", heroTitle2:"Festival in Canada",
+    heroLede:"An artistic and cultural bridge between Egypt and Canada, celebrated through cinema.",
+    ctaDiscover:"Discover the festival", ctaPartner:"Become a partner",
+    pill1:"Screenings", pill2:"Talks & encounters", pill3:"Heritage & new work", pill4:"International partnerships",
+    aboutKicker:"About",
+    aboutTitle:"Festival du Film et du Cinéma Égyptien au Canada",
+    aboutP1:"The Egyptian Film and Cinema Festival in Canada (EFCF Canada) is a cultural and cinematic festival based in Canada. Its mission is to introduce Canadian audiences to the richness of Egyptian cinema and to build an artistic and cultural bridge between Egypt and Canada.",
+    aboutP2:"Through screenings, discussions and encounters with filmmakers and artists, the festival celebrates the exceptional heritage of Egyptian cinema as well as its contemporary creation, while fostering dialogue and cultural exchange.",
+    aboutP3:"EFCF Canada also seeks to develop partnerships with film festivals, cultural institutions, filmmakers and industry professionals in Canada and internationally, in order to strengthen cultural and professional exchange through cinema.",
+    visionKicker:"Our vision", visionTitle:"A recognized platform, a lasting bridge",
+    visionP:"To make EFCF Canada a recognized platform for the promotion of Egyptian cinema in Canada, and a genuine bridge between Egypt, Canada and the international film community.",
+    objKicker:"Our objectives", objTitle:"What we are building",
+    obj1:"Present a diverse selection of Egyptian films to Canadian audiences.",
+    obj2:"Host encounters and discussions with filmmakers, artists and film professionals.",
+    obj3:"Strengthen the presence of Egyptian cinema within the Canadian cultural landscape.",
+    obj4:"Develop partnerships and exchanges with film festivals and institutions in Canada and abroad.",
+    obj5:"Create a meeting space between film professionals and audiences from different cultures.",
+    leadKicker:"Festival leadership", leadTitle:"One leadership, a shared vision",
+    lead1Name:"Nour Sobhy", lead2Name:"Ahmed Bondok",
+    leadRole:"Co-founder & Co-president", leadRole2:"Co-founder & Co-president",
+    leadNote:"The festival leadership is supported by an Executive Committee, whose members and responsibilities will be announced soon.",
+    quoteKicker:"Egyptian cinema, a bridge between cultures",
+    quoteText:"At EFCF Canada, we believe cinema is far more than a film projected on a screen: it is a universal language able to bring people closer, to create dialogue and to build real bridges between cultures.",
+    contactKicker:"Contact", contactTitle:"Let’s work together",
+    contactP:"Festivals, cultural institutions, filmmakers, partners and media: write to us for any collaboration, film submission or press request.",
+    contactEmailLabel:"Email", contactPressLabel:"Press & partnerships", contactLocationLabel:"Location", contactLocation:"Canada",
+    footLeft:"© 2026 EFCF Canada — Egyptian Film and Cinema Festival in Canada",
+    footRight:"A bridge between Egypt and Canada"
+  },
+  ar:{
+    _dir:"rtl", _title:"مهرجان الفيلم والسينما المصرية في كندا — EFCF Canada",
+    brandSub:"كندا",
+    navAbout:"عن المهرجان", navVision:"رؤيتنا", navObjectives:"أهدافنا", navLeadership:"إدارة المهرجان", navContact:"تواصل معنا",
+    heroEyebrow:"مهرجان ثقافي وسينمائي",
+    heroTitle1:"مهرجان الفيلم والسينما", heroTitle2:"المصرية في كندا",
+    heroLede:"جسر فني وثقافي بين مصر وكندا، نحتفي به من خلال السينما.",
+    ctaDiscover:"تعرّف على المهرجان", ctaPartner:"كن شريكاً",
+    pill1:"عروض سينمائية", pill2:"لقاءات وندوات", pill3:"إرث وإبداع معاصر", pill4:"شراكات دولية",
+    aboutKicker:"عن المهرجان",
+    aboutTitle:"مهرجان الفيلم والسينما المصرية في كندا",
+    aboutP1:"مهرجان الفيلم والسينما المصرية في كندا (EFCF Canada) هو مهرجان ثقافي وسينمائي مقرّه كندا، تتمثل رسالته في تعريف الجمهور الكندي بثراء السينما المصرية وبناء جسر فني وثقافي بين مصر وكندا.",
+    aboutP2:"من خلال العروض السينمائية والندوات واللقاءات مع صنّاع الأفلام والفنانين، يحتفي المهرجان بالإرث الاستثنائي للسينما المصرية وبإنتاجها المعاصر، مع تعزيز الحوار والتبادل الثقافي.",
+    aboutP3:"يسعى المهرجان أيضاً إلى بناء شراكات مع المهرجانات السينمائية والمؤسسات الثقافية وصنّاع الأفلام والمهنيين في كندا وعلى المستوى الدولي، بهدف تعزيز التبادل الثقافي والمهني عبر السينما.",
+    visionKicker:"رؤيتنا", visionTitle:"منصة معترف بها، وجسر يدوم",
+    visionP:"أن يصبح EFCF Canada منصة معترفاً بها للترويج للسينما المصرية في كندا، وجسراً حقيقياً بين مصر وكندا والمجتمع السينمائي الدولي.",
+    objKicker:"أهدافنا", objTitle:"ما الذي نبنيه",
+    obj1:"تقديم مجموعة متنوعة من الأفلام المصرية للجمهور الكندي.",
+    obj2:"تنظيم لقاءات وندوات مع صنّاع الأفلام والفنانين والمهنيين في مجال السينما.",
+    obj3:"تعزيز حضور السينما المصرية في المشهد الثقافي الكندي.",
+    obj4:"تطوير شراكات وتبادلات مع المهرجانات والمؤسسات السينمائية في كندا وخارجها.",
+    obj5:"خلق مساحة لقاء بين المهنيين في مجال السينما وجماهير من ثقافات مختلفة.",
+    leadKicker:"إدارة المهرجان", leadTitle:"إدارة واحدة ورؤية مشتركة",
+    lead1Name:"نور صبحي", lead2Name:"أحمد بندق",
+    leadRole:"شريكة في التأسيس والرئاسة", leadRole2:"شريك في التأسيس والرئاسة",
+    leadNote:"تحظى إدارة المهرجان بدعم لجنة تنفيذية، سيتم الإعلان عن أعضائها ومسؤولياتها قريباً.",
+    quoteKicker:"السينما المصرية، جسر بين الثقافات",
+    quoteText:"نؤمن في EFCF Canada بأن السينما أكثر بكثير من فيلم يُعرض على شاشة: إنها لغة عالمية قادرة على تقريب الشعوب، وخلق الحوار، وبناء جسور حقيقية بين الثقافات.",
+    contactKicker:"تواصل معنا", contactTitle:"لنعمل معاً",
+    contactP:"المهرجانات والمؤسسات الثقافية وصنّاع الأفلام والشركاء ووسائل الإعلام: راسلونا لأي تعاون أو تقديم فيلم أو طلب صحفي.",
+    contactEmailLabel:"البريد الإلكتروني", contactPressLabel:"الصحافة والشراكات", contactLocationLabel:"الموقع", contactLocation:"كندا",
+    footLeft:"© 2026 EFCF Canada — مهرجان الفيلم والسينما المصرية في كندا",
+    footRight:"جسر بين مصر وكندا"
+  }
+};
+
+const html = document.documentElement;
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  html.lang = lang;
+  html.dir = dict._dir;
+  document.title = dict._title;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const v = dict[el.dataset.i18n];
+    if(v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll(".langs button").forEach(b=>{
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+  try{ localStorage.setItem("efcf-lang", lang); }catch(e){}
+}
+document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+let saved=null; try{ saved = localStorage.getItem("efcf-lang"); }catch(e){}
+setLang(saved && I18N[saved] ? saved : "fr");
+
+const nav = document.getElementById("nav"), menuBtn = document.getElementById("menuBtn");
+menuBtn.addEventListener("click",()=>{
+  const open = nav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(open));
+});
+nav.addEventListener("click",e=>{
+  if(e.target.tagName === "A"){ nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); }
+});
+
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+},{threshold:.12});
+document.querySelectorAll(".rv").forEach((el,i)=>{
+  el.style.transitionDelay = (i % 5) * 70 + "ms";
+  io.observe(el);
+});
+
+/* Si assets/logo.png existe, il remplace le sceau vectoriel partout. */
+(function(){
+  const probe = new Image();
+  probe.onload = ()=>{
+    document.querySelectorAll(".logo-img").forEach(el=>el.hidden = false);
+    document.querySelectorAll(".logo-svg").forEach(el=>el.remove());
+  };
+  probe.src = "assets/logo.png";
+})();
+
+const bar = document.getElementById("progress");
+addEventListener("scroll",()=>{
+  const h = document.documentElement.scrollHeight - innerHeight;
+  bar.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + "%";
+},{passive:true});
+</script>
+</body>
+</html>
