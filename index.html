@@ -483,7 +483,7 @@
           <p class="role" data-i18n="leadRole2">Co-fondateur &amp; Co-président</p>
         </div>
         <div class="person rv">
-          <div class="avatar"><img src="assets/team/nour-sobhy.jpg" alt="" style="object-position:53% 42%"><span>NS</span></div>
+          <div class="avatar"><img src="assets/team/nour-sobhy.png" alt="" style="object-position:54% 46%"><span>NS</span></div>
           <h3 data-i18n="lead1Name">Nour Sobhy</h3>
           <p class="role" data-i18n="leadRole">Co-fondatrice &amp; Co-présidente</p>
         </div>
@@ -734,11 +734,14 @@ document.querySelectorAll(".rv").forEach((el,i)=>{
   probe.src = "assets/logo.jpg";
 })();
 
-/* Portraits manquants : on retombe sur le médaillon d'initiales. */
+/* Photo chargée : on supprime les initiales. Photo absente : on les garde. */
 document.querySelectorAll(".avatar img").forEach(img=>{
-  const drop = ()=>img.remove();
-  img.addEventListener("error", drop);
-  if(img.complete && img.naturalWidth === 0) drop();
+  const initials = img.parentNode.querySelector("span");
+  const ok = ()=>{ if(initials) initials.remove(); };
+  const fail = ()=>img.remove();
+  img.addEventListener("load", ok);
+  img.addEventListener("error", fail);
+  if(img.complete) (img.naturalWidth > 0 ? ok : fail)();
 });
 
 const bar = document.getElementById("progress");
