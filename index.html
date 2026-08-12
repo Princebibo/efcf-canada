@@ -200,24 +200,34 @@
   }
   .card p{margin:0;font-size:.98rem;color:var(--muted)}
 
-  /* leadership */
-  .leads{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:2.4rem;max-width:760px;margin-inline:auto}
-  .lead{
-    border:1px solid rgba(12,19,48,.12);border-radius:16px;padding:1.9rem 1.5rem;background:#fff;text-align:center;
+  /* leadership + team */
+  .leads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin-top:2.4rem;max-width:720px;margin-inline:auto}
+  .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1.2rem;margin-top:2.2rem}
+  .person{
+    border:1px solid rgba(12,19,48,.12);border-radius:16px;padding:1.9rem 1.4rem 1.7rem;background:#fff;text-align:center;
     box-shadow:0 18px 40px -34px rgba(12,19,48,.8);transition:.28s;
   }
-  .lead:hover{transform:translateY(-4px);box-shadow:0 26px 46px -30px rgba(12,19,48,.7)}
-  .lead .mono{
-    width:62px;height:62px;margin:0 auto 1rem;border-radius:50%;
+  .person:hover{transform:translateY(-4px);box-shadow:0 26px 46px -30px rgba(12,19,48,.7)}
+  .avatar{
+    position:relative;width:118px;height:118px;margin:0 auto 1.1rem;border-radius:50%;
     background:radial-gradient(circle at 30% 25%,var(--navy-2),var(--navy));
-    color:var(--gold);display:grid;place-items:center;
-    font-family:"Cormorant Garamond",Georgia,serif;font-size:1.4rem;font-weight:700;letter-spacing:.06em;
-    border:1px solid rgba(240,179,35,.45);
+    border:2px solid rgba(240,179,35,.5);box-shadow:0 0 0 5px rgba(240,179,35,.1);
+    overflow:hidden;display:grid;place-items:center;
   }
-  .lead h3{margin:0 0 .3rem;font-family:var(--serif);font-size:1.45rem;font-weight:700}
-  .lead p{margin:0;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#a4741a;font-weight:600}
-  html[lang="ar"] .lead p{letter-spacing:0;text-transform:none;font-size:.98rem}
-  .note{margin:2rem auto 0;font-size:.95rem;text-align:center;color:var(--muted-dark);max-width:60ch}
+  .leads .avatar{width:148px;height:148px}
+  .avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+  .avatar span{
+    color:var(--gold);font-family:"Cormorant Garamond",Georgia,serif;
+    font-size:2rem;font-weight:700;letter-spacing:.06em;
+  }
+  .person h3{margin:0 0 .35rem;font-family:var(--serif);font-size:1.4rem;font-weight:700;line-height:1.2}
+  .leads .person h3{font-size:1.55rem}
+  .person .role{margin:0;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#a4741a;font-weight:600;line-height:1.55}
+  html[lang="ar"] .person .role{letter-spacing:0;text-transform:none;font-size:.95rem}
+  .person .meta{margin:.55rem 0 0;font-size:.85rem;color:var(--muted-dark);font-style:italic}
+  html[lang="ar"] .person .meta{font-style:normal}
+  .subhead{margin-top:3.6rem;text-align:center}
+  .subhead h3{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;margin:0 0 .6rem}
 
   /* quote */
   .quote{
@@ -255,6 +265,14 @@
     .menu-btn{display:block}
     header .bar{position:relative;flex-wrap:wrap}
     .brand .mark{width:42px;height:42px}
+  }
+  /* les deux co-président·e·s restent côte à côte, même sur mobile */
+  @media (max-width:560px){
+    .leads{gap:.7rem}
+    .person{padding:1.3rem .8rem 1.2rem}
+    .leads .avatar{width:96px;height:96px}
+    .leads .person h3{font-size:1.15rem}
+    .person .role{font-size:.66rem;letter-spacing:.08em}
   }
   @media (prefers-reduced-motion:reduce){
     .rv{opacity:1;transform:none;transition:none}
@@ -458,18 +476,47 @@
         <div class="ornament"><i></i><b></b><i></i></div>
       </div>
       <div class="leads">
-        <div class="lead rv">
-          <div class="mono">NS</div>
-          <h3 data-i18n="lead1Name">Nour Sobhy</h3>
-          <p data-i18n="leadRole">Co-fondatrice &amp; Co-présidente</p>
-        </div>
-        <div class="lead rv">
-          <div class="mono">AB</div>
+        <div class="person rv">
+          <div class="avatar"><img src="assets/team/ahmed-bondok.jpg" alt=""><span>AB</span></div>
           <h3 data-i18n="lead2Name">Ahmed Bondok</h3>
-          <p data-i18n="leadRole2">Co-fondateur &amp; Co-président</p>
+          <p class="role" data-i18n="leadRole2">Co-fondateur &amp; Co-président</p>
+        </div>
+        <div class="person rv">
+          <div class="avatar"><img src="assets/team/nour-sobhy.jpg" alt=""><span>NS</span></div>
+          <h3 data-i18n="lead1Name">Nour Sobhy</h3>
+          <p class="role" data-i18n="leadRole">Co-fondatrice &amp; Co-présidente</p>
         </div>
       </div>
-      <p class="note rv" data-i18n="leadNote">La direction du festival est soutenue par un Comité exécutif, dont les membres et les responsabilités seront présentés prochainement.</p>
+
+      <div class="subhead rv center">
+        <p class="kicker" data-i18n="teamKicker">Comité exécutif</p>
+        <h3 data-i18n="teamTitle">Celles et ceux qui font le festival</h3>
+        <div class="ornament"><i></i><b></b><i></i></div>
+      </div>
+
+      <div class="team">
+        <div class="person rv">
+          <div class="avatar"><img src="assets/team/albert-fahmy.jpg" alt=""><span>AF</span></div>
+          <h3 data-i18n="m1Name">Albert Fahmy</h3>
+          <p class="role" data-i18n="m1Role">Directeur des relations publiques et des communications</p>
+        </div>
+        <div class="person rv">
+          <div class="avatar"><img src="assets/team/maged-zarif.jpg" alt=""><span>MZ</span></div>
+          <h3 data-i18n="m2Name">Maged Zarif</h3>
+          <p class="role" data-i18n="m2Role">Directeur des arts, de la créativité et du développement artistique</p>
+        </div>
+        <div class="person rv">
+          <div class="avatar"><img src="assets/team/mina-soliman.jpg" alt=""><span>MS</span></div>
+          <h3 data-i18n="m3Name">Mina Soliman</h3>
+          <p class="role" data-i18n="m3Role">Directeur de la direction artistique et de la production</p>
+        </div>
+        <div class="person rv">
+          <div class="avatar"><img src="assets/team/bill-korbatly.jpg" alt=""><span>BK</span></div>
+          <h3 data-i18n="m4Name">Me Bill Korbatly</h3>
+          <p class="role" data-i18n="m4Role">Conseiller juridique</p>
+          <p class="meta" data-i18n="m4Meta">Avocat, médiateur et arbitre</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -547,7 +594,11 @@ const I18N = {
     leadKicker:"Direction du festival", leadTitle:"Une direction, une vision partagée",
     lead1Name:"Nour Sobhy", lead2Name:"Ahmed Bondok",
     leadRole:"Co-fondatrice & Co-présidente", leadRole2:"Co-fondateur & Co-président",
-    leadNote:"La direction du festival est soutenue par un Comité exécutif, dont les membres et les responsabilités seront présentés prochainement.",
+    teamKicker:"Comité exécutif", teamTitle:"Celles et ceux qui font le festival",
+    m1Name:"Albert Fahmy", m1Role:"Directeur des relations publiques et des communications",
+    m2Name:"Maged Zarif", m2Role:"Directeur des arts, de la créativité et du développement artistique",
+    m3Name:"Mina Soliman", m3Role:"Directeur de la direction artistique et de la production",
+    m4Name:"Me Bill Korbatly", m4Role:"Conseiller juridique", m4Meta:"Avocat, médiateur et arbitre",
     quoteKicker:"Le cinéma égyptien, un pont entre les cultures",
     quoteText:"À l’EFCF Canada, nous croyons que le cinéma est bien plus qu’un film projeté sur un écran : c’est un langage universel capable de rapprocher les peuples, de créer des dialogues et de construire de véritables ponts entre les cultures.",
     contactKicker:"Contact", contactTitle:"Travaillons ensemble",
@@ -581,7 +632,11 @@ const I18N = {
     leadKicker:"Festival leadership", leadTitle:"One leadership, a shared vision",
     lead1Name:"Nour Sobhy", lead2Name:"Ahmed Bondok",
     leadRole:"Co-founder & Co-president", leadRole2:"Co-founder & Co-president",
-    leadNote:"The festival leadership is supported by an Executive Committee, whose members and responsibilities will be announced soon.",
+    teamKicker:"Executive Committee", teamTitle:"The people behind the festival",
+    m1Name:"Albert Fahmy", m1Role:"Director of Public Relations & Communications",
+    m2Name:"Maged Zarif", m2Role:"Director of Arts, Creativity & Artistic Development",
+    m3Name:"Mina Soliman", m3Role:"Director of Artistic Direction & Production",
+    m4Name:"Me Bill Korbatly", m4Role:"Legal counsel", m4Meta:"Lawyer, mediator and arbitrator",
     quoteKicker:"Egyptian cinema, a bridge between cultures",
     quoteText:"At EFCF Canada, we believe cinema is far more than a film projected on a screen: it is a universal language able to bring people closer, to create dialogue and to build real bridges between cultures.",
     contactKicker:"Contact", contactTitle:"Let’s work together",
@@ -615,7 +670,11 @@ const I18N = {
     leadKicker:"إدارة المهرجان", leadTitle:"إدارة واحدة ورؤية مشتركة",
     lead1Name:"نور صبحي", lead2Name:"أحمد بندق",
     leadRole:"شريكة في التأسيس والرئاسة", leadRole2:"شريك في التأسيس والرئاسة",
-    leadNote:"تحظى إدارة المهرجان بدعم لجنة تنفيذية، سيتم الإعلان عن أعضائها ومسؤولياتها قريباً.",
+    teamKicker:"اللجنة التنفيذية", teamTitle:"من يصنعون المهرجان",
+    m1Name:"ألبرت فهمي", m1Role:"مدير العلاقات العامة والاتصالات",
+    m2Name:"ماجد ظريف", m2Role:"مدير الفنون والإبداع والتطوير الفني",
+    m3Name:"مينا سليمان", m3Role:"مدير الإخراج الفني والإنتاج",
+    m4Name:"الأستاذ بيل قرباطلي", m4Role:"المستشار القانوني", m4Meta:"محامٍ ووسيط ومحكّم",
     quoteKicker:"السينما المصرية، جسر بين الثقافات",
     quoteText:"نؤمن في EFCF Canada بأن السينما أكثر بكثير من فيلم يُعرض على شاشة: إنها لغة عالمية قادرة على تقريب الشعوب، وخلق الحوار، وبناء جسور حقيقية بين الثقافات.",
     contactKicker:"تواصل معنا", contactTitle:"لنعمل معاً",
@@ -673,6 +732,13 @@ document.querySelectorAll(".rv").forEach((el,i)=>{
   };
   probe.src = "assets/logo.png";
 })();
+
+/* Portraits manquants : on retombe sur le médaillon d'initiales. */
+document.querySelectorAll(".avatar img").forEach(img=>{
+  const drop = ()=>img.remove();
+  img.addEventListener("error", drop);
+  if(img.complete && img.naturalWidth === 0) drop();
+});
 
 const bar = document.getElementById("progress");
 addEventListener("scroll",()=>{
