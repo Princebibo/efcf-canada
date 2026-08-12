@@ -38,6 +38,7 @@
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   img,svg{display:block;max-width:100%}
+  [hidden]{display:none !important}   /* sinon la règle ci-dessus ré-affiche les images masquées */
   .wrap{width:min(100% - 2.5rem,var(--maxw));margin-inline:auto}
   ::selection{background:var(--gold);color:var(--navy-deep)}
 
