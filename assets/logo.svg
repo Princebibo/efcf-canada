@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" role="img" aria-label="EFCF Canada logo">
+  <defs>
+    <linearGradient id="gold" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#f9e7a6"/>
+      <stop offset="25%" stop-color="#f0c14a"/>
+      <stop offset="50%" stop-color="#d59b12"/>
+      <stop offset="75%" stop-color="#f0b323"/>
+      <stop offset="100%" stop-color="#f7d17a"/>
+    </linearGradient>
+    <linearGradient id="goldDeep" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe8a0"/>
+      <stop offset="100%" stop-color="#b67c0e"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(0 0)" filter="url(#shadow)">
+    <path d="M145 790 L450 120 L755 790 Z" fill="none" stroke="url(#gold)" stroke-width="8"/>
+    <path d="M182 770 L450 180 L718 770 Z" fill="none" stroke="url(#gold)" stroke-width="4" opacity="0.9"/>
+
+    <path d="M175 620 C255 690, 337 735, 452 735 C573 735, 655 694, 725 621" fill="none" stroke="url(#gold)" stroke-width="18" stroke-linecap="round"/>
+    <path d="M170 640 C250 720, 335 760, 452 760 C570 760, 653 723, 716 650" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+
+    <path d="M130 600 C180 470, 260 410, 340 390 C420 370, 465 355, 522 366 C610 380, 678 445, 755 585" fill="none" stroke="url(#gold)" stroke-width="18" stroke-linecap="round" transform="rotate(-10 450 490)"/>
+    <path d="M180 590 C260 465, 344 430, 430 430 C521 430, 595 465, 690 577" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round" opacity="0.95"/>
+
+    <g transform="translate(0 20)">
+      <ellipse cx="450" cy="470" rx="248" ry="168" fill="none" stroke="url(#gold)" stroke-width="18"/>
+      <ellipse cx="450" cy="470" rx="188" ry="126" fill="none" stroke="url(#gold)" stroke-width="10" opacity="0.9"/>
+      <ellipse cx="450" cy="470" rx="138" ry="96" fill="none" stroke="url(#gold)" stroke-width="8" opacity="0.9"/>
+
+      <path d="M348 470 C350 397, 380 350, 450 350 C520 350, 550 397, 552 470 C550 545, 517 594, 450 594 C380 594, 350 546, 348 470 Z" fill="#0c1427" stroke="url(#gold)" stroke-width="10"/>
+      <path d="M332 470 C332 381, 390 324, 450 324 C510 324, 568 381, 568 470 C568 560, 511 614, 450 614 C390 614, 332 560, 332 470 Z" fill="none" stroke="url(#gold)" stroke-width="6" opacity="0.8"/>
+
+      <path d="M450 355 C320 355, 288 444, 285 470 C285 520, 331 582, 450 582 C568 582, 615 520, 615 470 C615 445, 580 355, 450 355 Z" fill="#0b1020" opacity="0.7"/>
+
+      <g fill="none" stroke="url(#gold)" stroke-width="5" opacity="0.9">
+        <path d="M150 470 H750"/>
+        <path d="M210 352 H690"/>
+        <path d="M230 586 H670"/>
+      </g>
+
+      <path d="M220 467 H680" stroke="url(#gold)" stroke-width="5" opacity="0.75"/>
+
+      <g fill="url(#gold)" stroke="url(#gold)" stroke-width="2">
+        <path d="M450 292 L464 332 L494 313 L486 347 L526 344 L500 370 L538 390 L496 405 L508 441 L475 420 L465 457 L450 419 L435 457 L425 420 L392 441 L404 405 L362 390 L400 370 L374 344 L414 347 L406 313 L436 332 Z"/>
+      </g>
+
+      <path d="M450 280 L470 312 L493 286 L486 334 L529 333 L497 364 L533 391 L487 401 L497 444 L460 416 L450 460 L440 416 L403 444 L413 401 L367 391 L403 364 L371 333 L414 334 L407 286 L430 312 Z" fill="#d62828"/>
+
+      <g fill="#0c1427" stroke="url(#gold)" stroke-width="8" stroke-linejoin="round">
+        <path d="M889 555 L820 496 L790 540 L860 605 Z"/>
+        <path d="M11 555 L80 496 L110 540 L40 605 Z"/>
+      </g>
+    </g>
+
+    <g fill="url(#gold)" opacity="0.95">
+      <path d="M180 732 C205 703, 212 678, 200 648 C236 669, 246 722, 226 760 C213 740, 198 735, 180 732 Z"/>
+      <path d="M710 732 C685 703, 678 678, 690 648 C654 669, 644 722, 664 760 C677 740, 692 735, 710 732 Z"/>
+      <path d="M265 770 C292 717, 310 695, 338 670 C330 714, 320 741, 303 782 C287 779, 275 776, 265 770 Z"/>
+      <path d="M633 770 C606 717, 588 695, 560 670 C568 714, 578 741, 595 782 C611 779, 623 776, 633 770 Z"/>
+      <path d="M372 795 C403 747, 421 718, 450 690 C480 718, 497 747, 528 795 C505 803, 476 809, 450 810 C425 809, 396 803, 372 795 Z"/>
+    </g>
+
+    <g fill="#0c1427" stroke="url(#gold)" stroke-width="6">
+      <path d="M270 842 C330 814, 380 800, 450 798 C520 800, 570 814, 630 842" fill="none"/>
+      <path d="M290 883 C340 860, 398 848, 450 848 C502 848, 560 860, 610 883" fill="none"/>
+    </g>
+
+    <g fill="url(#gold)" font-family="Georgia, 'Times New Roman', serif" font-weight="700" letter-spacing="4">
+      <text x="450" y="910" text-anchor="middle" font-size="62">EGYPTIAN FILM</text>
+      <text x="450" y="968" text-anchor="middle" font-size="52">AND CINEMA FESTIVAL</text>
+    </g>
+  </g>
+</svg>
