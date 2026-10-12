@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EFCF Canada — Festival du Film et du Cinéma Égyptien au Canada</title>
-<meta name="description" content="Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) fait découvrir la richesse du cinéma égyptien au public canadien et crée un pont artistique entre l'Égypte et le Canada.">
+<meta name="description" content="Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) fait découvrir la richesse du cinéma égyptien au public canadien et crée un pont artistique entre l’Égypte et le Canada.">
 <meta name="theme-color" content="#080f26">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,17 +38,15 @@
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   img,svg{display:block;max-width:100%}
-  [hidden]{display:none !important}   /* sinon la règle ci-dessus ré-affiche les images masquées */
+  [hidden]{display:none !important}
   .wrap{width:min(100% - 2.5rem,var(--maxw));margin-inline:auto}
   ::selection{background:var(--gold);color:var(--navy-deep)}
 
-  /* scroll progress */
   #progress{
     position:fixed;inset-block-start:0;inset-inline-start:0;height:2px;width:0;z-index:99;
     background:linear-gradient(90deg,var(--gold-lo),var(--gold),var(--gold-hi));
   }
 
-  /* ---------- Header ---------- */
   header{
     position:sticky;top:0;z-index:60;
     background:rgba(8,15,38,.78);backdrop-filter:blur(16px);
@@ -92,7 +90,6 @@
   }
   .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:9px;color:var(--gold);padding:.35rem .6rem;font-size:1.1rem;cursor:pointer;line-height:1}
 
-  /* ---------- Film strip divider ---------- */
   .filmstrip{
     height:22px;border-block:1px solid rgba(240,179,35,.22);
     background:
@@ -100,7 +97,6 @@
       linear-gradient(180deg,rgba(240,179,35,.05),transparent);
   }
 
-  /* ---------- Hero ---------- */
   .hero{
     position:relative;overflow:hidden;
     padding:clamp(3rem,8vw,6rem) 0 clamp(3rem,7vw,5rem);
@@ -150,9 +146,8 @@
     animation:pulse 7s ease-in-out infinite;
   }
   @keyframes pulse{0%,100%{opacity:.55;transform:scale(.97)}50%{opacity:1;transform:scale(1.03)}}
-  .sealbox svg,.sealbox img{position:relative;width:100%;height:auto;border-radius:50%;filter:drop-shadow(0 26px 60px rgba(0,0,0,.6))}
+  .sealbox img{position:relative;width:100%;height:auto;border-radius:50%;filter:drop-shadow(0 26px 60px rgba(0,0,0,.6))}
 
-  /* pillars */
   .pillars{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
     gap:1px;background:rgba(240,179,35,.16);
@@ -164,7 +159,6 @@
   }
   html[lang="ar"] .pillars div{letter-spacing:0;text-transform:none;font-size:.92rem}
 
-  /* ---------- Sections ---------- */
   section{padding:clamp(3.6rem,7vw,6.2rem) 0}
   .band-light{background:linear-gradient(180deg,var(--paper),var(--paper-2));color:var(--ink)}
   .band-light .muted{color:var(--muted-dark)}
@@ -182,7 +176,6 @@
   .center .ornament{justify-content:center}
   .center .ornament i:first-child{background:linear-gradient(90deg,transparent,var(--gold))}
 
-  /* objectives */
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(262px,1fr));gap:1.05rem;margin-top:2.5rem}
   .card{
     position:relative;overflow:hidden;
@@ -201,7 +194,6 @@
   }
   .card p{margin:0;font-size:.98rem;color:var(--muted)}
 
-  /* leadership + team */
   .leads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin-top:2.4rem;max-width:720px;margin-inline:auto}
   .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1.2rem;margin-top:2.2rem}
   .person{
@@ -230,7 +222,6 @@
   .subhead{margin-top:3.6rem;text-align:center}
   .subhead h3{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;margin:0 0 .6rem}
 
-  /* quote */
   .quote{
     position:relative;text-align:center;
     background:radial-gradient(900px 500px at 50% 0%,rgba(240,179,35,.15),transparent 65%),var(--navy-deep);
@@ -241,7 +232,6 @@
   .maple i{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
   .maple svg{width:26px;height:26px;fill:var(--maple)}
 
-  /* contact */
   .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.4rem}
   .contact-grid > div{border:1px solid rgba(240,179,35,.16);border-radius:14px;padding:1.4rem 1.4rem;background:rgba(255,255,255,.03)}
   .contact-grid a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;font-weight:500}
@@ -267,7 +257,6 @@
     header .bar{position:relative;flex-wrap:wrap}
     .brand .mark{width:42px;height:42px}
   }
-  /* les deux co-président·e·s restent côte à côte, même sur mobile */
   @media (max-width:560px){
     .leads{gap:.7rem}
     .person{padding:1.3rem .8rem 1.2rem}
@@ -285,85 +274,10 @@
 <body>
 <div id="progress"></div>
 
-<!-- ============ Logo (recréation vectorielle du sceau EFCFC) ============ -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="efcf-seal" viewBox="0 0 400 400">
-      <path id="arcTop" d="M 32,200 A 168,168 0 0 1 368,200" fill="none"/>
-      <path id="arcBot" d="M 368,200 A 168,168 0 0 1 32,200" fill="none"/>
-
-      <circle cx="200" cy="200" r="196" fill="#101d43"/>
-      <circle cx="200" cy="200" r="191" fill="none" stroke="#f0b323" stroke-width="9"/>
-      <circle cx="200" cy="200" r="156" fill="none" stroke="#f0b323" stroke-width="4"/>
-      <circle cx="200" cy="200" r="143" fill="none" stroke="#f0b323" stroke-width="2.5"/>
-
-      <g fill="#f0b323" font-family="Cormorant Garamond,Georgia,serif" font-weight="700">
-        <text font-size="18" letter-spacing=".5">
-          <textPath href="#arcTop" startOffset="50%" text-anchor="middle" textLength="470">EGYPTIAN FILM AND CINEMA FESTIVAL IN CANADA</textPath>
-        </text>
-        <text font-size="18" letter-spacing=".5">
-          <textPath href="#arcBot" startOffset="50%" text-anchor="middle" textLength="455">Festival Du Film Et Du Cinéma Égyptiens Au Canada</textPath>
-        </text>
-      </g>
-      <circle cx="32" cy="200" r="5.5" fill="#f0b323"/>
-      <circle cx="368" cy="200" r="5.5" fill="#f0b323"/>
-
-      <!-- pellicules -->
-      <g stroke="#f0b323" fill="#101d43">
-        <g id="efcf-strip" transform="rotate(13 110 259)">
-          <rect x="62" y="246" width="98" height="27" stroke-width="3.4" rx="2"/>
-          <g fill="#f0b323" stroke="none">
-            <rect x="69" y="250" width="7" height="6" rx="1"/><rect x="85" y="250" width="7" height="6" rx="1"/>
-            <rect x="101" y="250" width="7" height="6" rx="1"/><rect x="117" y="250" width="7" height="6" rx="1"/>
-            <rect x="133" y="250" width="7" height="6" rx="1"/>
-            <rect x="69" y="263" width="7" height="6" rx="1"/><rect x="85" y="263" width="7" height="6" rx="1"/>
-            <rect x="101" y="263" width="7" height="6" rx="1"/><rect x="117" y="263" width="7" height="6" rx="1"/>
-            <rect x="133" y="263" width="7" height="6" rx="1"/>
-          </g>
-        </g>
-        <use href="#efcf-strip" transform="translate(400,0) scale(-1,1)"/>
-      </g>
-
-      <!-- masque pharaonique -->
-      <clipPath id="efcf-nemes">
-        <path d="M200,95 C172,95 152,111 149,138 L141,200 C139,220 133,232 121,240 L130,266 L270,266 L279,240 C267,232 261,220 259,200 L251,138 C248,111 228,95 200,95 Z"/>
-      </clipPath>
-      <g>
-        <path d="M200,95 C172,95 152,111 149,138 L141,200 C139,220 133,232 121,240 L130,266 L270,266 L279,240 C267,232 261,220 259,200 L251,138 C248,111 228,95 200,95 Z"
-              fill="#101d43" stroke="#f0b323" stroke-width="5" stroke-linejoin="round"/>
-        <g clip-path="url(#efcf-nemes)" stroke="#f0b323" stroke-width="4.5">
-          <path d="M108,120h184M108,136h184M108,152h184M108,168h184M108,184h184M108,200h184M108,216h184M108,232h184M108,248h184M108,262h184"/>
-        </g>
-        <!-- uraeus -->
-        <path d="M200,72c-9,0-14,6-14,13v16h28V85c0-7-5-13-14-13z" fill="#101d43" stroke="#f0b323" stroke-width="4.5" stroke-linejoin="round"/>
-        <circle cx="200" cy="68" r="6.5" fill="#101d43" stroke="#f0b323" stroke-width="4"/>
-        <!-- visage -->
-        <ellipse cx="200" cy="188" rx="50" ry="57" fill="#101d43" stroke="#f0b323" stroke-width="5"/>
-        <!-- barbe -->
-        <path d="M188,244v34c0,8,5,13,12,13s12-5,12-13v-34z" fill="#101d43" stroke="#f0b323" stroke-width="4.5" stroke-linejoin="round"/>
-        <g stroke="#f0b323" stroke-width="3"><path d="M189,256h22M189,268h22"/></g>
-      </g>
-
-      <!-- feuilles d'érable + EFCFC -->
-      <g fill="#d62828">
-        <g transform="translate(106,272) scale(.35)">
-          <path d="M50,4 57,26 74,15 69,38 92,33 79,49 98,58 74,64 80,82 57,75 54,97 46,97 43,75 20,82 26,64 2,58 21,49 8,33 31,38 26,15 43,26 Z"/>
-        </g>
-        <g transform="translate(259,272) scale(.35)">
-          <path d="M50,4 57,26 74,15 69,38 92,33 79,49 98,58 74,64 80,82 57,75 54,97 46,97 43,75 20,82 26,64 2,58 21,49 8,33 31,38 26,15 43,26 Z"/>
-        </g>
-      </g>
-      <text x="200" y="312" text-anchor="middle" fill="#f0b323"
-            font-family="Cormorant Garamond,Georgia,serif" font-weight="700" font-size="41" letter-spacing="1.5">EFCFC</text>
-    </symbol>
-  </defs>
-</svg>
-
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top">
-      <img class="mark logo-img" src="assets/logo.jpg" alt="" hidden>
-      <svg class="mark logo-svg" viewBox="0 0 400 400" aria-hidden="true"><use href="#efcf-seal"/></svg>
+      <img class="mark logo-img" src="assets/logo.svg" alt="EFCF Canada logo">
       <span class="txt">
         <b>EFCF</b>
         <span data-i18n="brandSub">Canada</span>
@@ -407,8 +321,7 @@
         </div>
       </div>
       <div class="sealbox rv">
-        <img class="logo-img" src="assets/logo.jpg" alt="EFCF Canada" hidden>
-        <svg class="logo-svg" viewBox="0 0 400 400" role="img" aria-label="EFCF Canada"><use href="#efcf-seal"/></svg>
+        <img class="logo-img" src="assets/logo.svg" alt="EFCF Canada logo">
       </div>
     </div>
   </section>
@@ -428,7 +341,7 @@
         <div class="ornament"><b></b><i></i></div>
       </div>
       <div class="rv">
-        <p data-i18n="aboutP1">Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) est un festival culturel et cinématographique basé au Canada. Il a pour mission de faire découvrir la richesse du cinéma égyptien au public canadien et de créer un pont artistique et culturel entre l’Égypte et le Canada.</p>
+        <p data-i18n="aboutP1">Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) est un festival culturel et cinématographique basé au Canada. Il a pour mission de faire découvrir la richesse du cinéma égyptien au public canadien et de créer un pont artistique entre l’Égypte et le Canada.</p>
         <p data-i18n="aboutP2">À travers des projections, des discussions, des rencontres avec des cinéastes et des artistes, le festival célèbre l’héritage exceptionnel du cinéma égyptien ainsi que sa création contemporaine, tout en favorisant le dialogue et les échanges culturels.</p>
         <p class="muted" data-i18n="aboutP3">L’EFCF Canada souhaite également développer des partenariats avec des festivals de cinéma, des institutions culturelles, des cinéastes et des professionnels de l’industrie au Canada et à l’international, afin de renforcer les échanges culturels et professionnels à travers le cinéma.</p>
       </div>
@@ -524,7 +437,7 @@
   <section class="quote">
     <div class="wrap rv">
       <p class="kicker" data-i18n="quoteKicker">Le cinéma égyptien, un pont entre les cultures</p>
-      <blockquote data-i18n="quoteText">À l’EFCF Canada, nous croyons que le cinéma est bien plus qu’un film projeté sur un écran : c’est un langage universel capable de rapprocher les peuples, de créer des dialogues et de construire de véritables ponts entre les cultures.</blockquote>
+      <blockquote data-i18n="quoteText">À l’EFCF Canada, nous croyons que le cinéma est bien plus qu’un film projeté sur un écran : c’est un langage universel capable de rapprocher les peuples, de créer des dialogues et de construire des ponts entre les cultures.</blockquote>
       <div class="maple">
         <i></i>
         <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50,4 57,26 74,15 69,38 92,33 79,49 98,58 74,64 80,82 57,75 54,97 46,97 43,75 20,82 26,64 2,58 21,49 8,33 31,38 26,15 43,26 Z"/></svg>
@@ -581,7 +494,7 @@ const I18N = {
     pill1:"Projections", pill2:"Rencontres & débats", pill3:"Héritage & création", pill4:"Partenariats internationaux",
     aboutKicker:"À propos",
     aboutTitle:"Egyptian Film and Cinema Festival in Canada",
-    aboutP1:"Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) est un festival culturel et cinématographique basé au Canada. Il a pour mission de faire découvrir la richesse du cinéma égyptien au public canadien et de créer un pont artistique et culturel entre l’Égypte et le Canada.",
+    aboutP1:"Le Festival du Film et du Cinéma Égyptien au Canada (EFCF Canada) est un festival culturel et cinématographique basé au Canada. Il a pour mission de faire découvrir la richesse du cinéma égyptien au public canadien et de créer un pont artistique entre l’Égypte et le Canada.",
     aboutP2:"À travers des projections, des discussions, des rencontres avec des cinéastes et des artistes, le festival célèbre l’héritage exceptionnel du cinéma égyptien ainsi que sa création contemporaine, tout en favorisant le dialogue et les échanges culturels.",
     aboutP3:"L’EFCF Canada souhaite également développer des partenariats avec des festivals de cinéma, des institutions culturelles, des cinéastes et des professionnels de l’industrie au Canada et à l’international, afin de renforcer les échanges culturels et professionnels à travers le cinéma.",
     visionKicker:"Notre vision", visionTitle:"Une plateforme reconnue, un pont durable",
@@ -601,7 +514,7 @@ const I18N = {
     m3Name:"Mina Soliman", m3Role:"Directeur de la direction artistique et de la production",
     m4Name:"Me Bill Korbatly", m4Role:"Conseiller juridique", m4Meta:"Avocat, médiateur et arbitre",
     quoteKicker:"Le cinéma égyptien, un pont entre les cultures",
-    quoteText:"À l’EFCF Canada, nous croyons que le cinéma est bien plus qu’un film projeté sur un écran : c’est un langage universel capable de rapprocher les peuples, de créer des dialogues et de construire de véritables ponts entre les cultures.",
+    quoteText:"À l’EFCF Canada, nous croyons que le cinéma est bien plus qu’un film projeté sur un écran : c’est un langage universel capable de rapprocher les peuples, de créer des dialogues et de construire des ponts entre les cultures.",
     contactKicker:"Contact", contactTitle:"Travaillons ensemble",
     contactP:"Festivals, institutions culturelles, cinéastes, partenaires et médias : écrivez-nous pour toute collaboration, soumission de film ou demande de presse.",
     contactEmailLabel:"Courriel", contactPressLabel:"Presse & partenariats", contactLocationLabel:"Lieu", contactLocation:"Canada",
@@ -621,9 +534,9 @@ const I18N = {
     aboutTitle:"Festival du Film et du Cinéma Égyptien au Canada",
     aboutP1:"The Egyptian Film and Cinema Festival in Canada (EFCF Canada) is a cultural and cinematic festival based in Canada. Its mission is to introduce Canadian audiences to the richness of Egyptian cinema and to build an artistic and cultural bridge between Egypt and Canada.",
     aboutP2:"Through screenings, discussions and encounters with filmmakers and artists, the festival celebrates the exceptional heritage of Egyptian cinema as well as its contemporary creation, while fostering dialogue and cultural exchange.",
-    aboutP3:"EFCF Canada also seeks to develop partnerships with film festivals, cultural institutions, filmmakers and industry professionals in Canada and internationally, in order to strengthen cultural and professional exchange through cinema.",
+    aboutP3:"EFCF Canada also seeks to develop partnerships with film festivals, cultural institutions, filmmakers and industry professionals in Canada and internationally, in order to strengthen cultural and professional exchanges through cinema.",
     visionKicker:"Our vision", visionTitle:"A recognized platform, a lasting bridge",
-    visionP:"To make EFCF Canada a recognized platform for the promotion of Egyptian cinema in Canada, and a genuine bridge between Egypt, Canada and the international film community.",
+    visionP:"To make EFCF Canada a recognized platform for the promotion of Egyptian cinema in Canada and a genuine bridge between Egypt, Canada and the international film community.",
     objKicker:"Our objectives", objTitle:"What we are building",
     obj1:"Present a diverse selection of Egyptian films to Canadian audiences.",
     obj2:"Host encounters and discussions with filmmakers, artists and film professionals.",
@@ -639,7 +552,7 @@ const I18N = {
     m3Name:"Mina Soliman", m3Role:"Director of Artistic Direction & Production",
     m4Name:"Me Bill Korbatly", m4Role:"Legal counsel", m4Meta:"Lawyer, mediator and arbitrator",
     quoteKicker:"Egyptian cinema, a bridge between cultures",
-    quoteText:"At EFCF Canada, we believe cinema is far more than a film projected on a screen: it is a universal language able to bring people closer, to create dialogue and to build real bridges between cultures.",
+    quoteText:"At EFCF Canada, we believe cinema is far more than a film projected on a screen: it is a universal language able to bring people closer, create dialogue and build real bridges between cultures.",
     contactKicker:"Contact", contactTitle:"Let’s work together",
     contactP:"Festivals, cultural institutions, filmmakers, partners and media: write to us for any collaboration, film submission or press request.",
     contactEmailLabel:"Email", contactPressLabel:"Press & partnerships", contactLocationLabel:"Location", contactLocation:"Canada",
@@ -657,9 +570,9 @@ const I18N = {
     pill1:"عروض سينمائية", pill2:"لقاءات وندوات", pill3:"إرث وإبداع معاصر", pill4:"شراكات دولية",
     aboutKicker:"عن المهرجان",
     aboutTitle:"مهرجان الفيلم والسينما المصرية في كندا",
-    aboutP1:"مهرجان الفيلم والسينما المصرية في كندا (EFCF Canada) هو مهرجان ثقافي وسينمائي مقرّه كندا، تتمثل رسالته في تعريف الجمهور الكندي بثراء السينما المصرية وبناء جسر فني وثقافي بين مصر وكندا.",
-    aboutP2:"من خلال العروض السينمائية والندوات واللقاءات مع صنّاع الأفلام والفنانين، يحتفي المهرجان بالإرث الاستثنائي للسينما المصرية وبإنتاجها المعاصر، مع تعزيز الحوار والتبادل الثقافي.",
-    aboutP3:"يسعى المهرجان أيضاً إلى بناء شراكات مع المهرجانات السينمائية والمؤسسات الثقافية وصنّاع الأفلام والمهنيين في كندا وعلى المستوى الدولي، بهدف تعزيز التبادل الثقافي والمهني عبر السينما.",
+    aboutP1:"مهرجان الفيلم والسينما المصرية في كندا (EFCF Canada) هو مهرجان ثقافي وسينمائي مقرّه كندا، تتمثل رسالته في تعريف الجمهور الكندي بالسينما المصرية وبناء جسر فني وثقافي بين مصر وكندا.",
+    aboutP2:"من خلال العروض السينمائية والندوات واللقاءات مع صنّاع الأفلام والفنانين، يحتفي المهرجان بالإرث الاستثنائي للسينما المصرية وإبداعاتها المعاصرة، مع تعزيز الحوار وبناء التبادل الثقافي.",
+    aboutP3:"يسعى المهرجان أيضاً إلى بناء شراكات مع المهرجانات السينمائية والمؤسسات الثقافية وصنّاع الأفلام والمهنيين في المجال في كندا وخارجها، من أجل تعزيز التبادل الثقافي والمهني عبر السينما.",
     visionKicker:"رؤيتنا", visionTitle:"منصة معترف بها، وجسر يدوم",
     visionP:"أن يصبح EFCF Canada منصة معترفاً بها للترويج للسينما المصرية في كندا، وجسراً حقيقياً بين مصر وكندا والمجتمع السينمائي الدولي.",
     objKicker:"أهدافنا", objTitle:"ما الذي نبنيه",
@@ -677,7 +590,7 @@ const I18N = {
     m3Name:"مينا سليمان", m3Role:"مدير الإخراج الفني والإنتاج",
     m4Name:"الأستاذ بيل قرباطلي", m4Role:"المستشار القانوني", m4Meta:"محامٍ ووسيط ومحكّم",
     quoteKicker:"السينما المصرية، جسر بين الثقافات",
-    quoteText:"نؤمن في EFCF Canada بأن السينما أكثر بكثير من فيلم يُعرض على شاشة: إنها لغة عالمية قادرة على تقريب الشعوب، وخلق الحوار، وبناء جسور حقيقية بين الثقافات.",
+    quoteText:"نؤمن في EFCF Canada بأن السينما أكثر بكثير من فيلم يُعرض على شاشة: إنها لغة عالمية قادرة على تقريب الشعوب، وإيجاد الحوار، وبناء جسور حقيقية بين الثقافات.",
     contactKicker:"تواصل معنا", contactTitle:"لنعمل معاً",
     contactP:"المهرجانات والمؤسسات الثقافية وصنّاع الأفلام والشركاء ووسائل الإعلام: راسلونا لأي تعاون أو تقديم فيلم أو طلب صحفي.",
     contactEmailLabel:"البريد الإلكتروني", contactPressLabel:"الصحافة والشراكات", contactLocationLabel:"الموقع", contactLocation:"كندا",
@@ -722,26 +635,6 @@ const io = new IntersectionObserver(entries=>{
 document.querySelectorAll(".rv").forEach((el,i)=>{
   el.style.transitionDelay = (i % 5) * 70 + "ms";
   io.observe(el);
-});
-
-/* Si assets/logo.png existe, il remplace le sceau vectoriel partout. */
-(function(){
-  const probe = new Image();
-  probe.onload = ()=>{
-    document.querySelectorAll(".logo-img").forEach(el=>el.hidden = false);
-    document.querySelectorAll(".logo-svg").forEach(el=>el.remove());
-  };
-  probe.src = "assets/logo.jpg";
-})();
-
-/* Photo chargée : on supprime les initiales. Photo absente : on les garde. */
-document.querySelectorAll(".avatar img").forEach(img=>{
-  const initials = img.parentNode.querySelector("span");
-  const ok = ()=>{ if(initials) initials.remove(); };
-  const fail = ()=>img.remove();
-  img.addEventListener("load", ok);
-  img.addEventListener("error", fail);
-  if(img.complete) (img.naturalWidth > 0 ? ok : fail)();
 });
 
 const bar = document.getElementById("progress");
